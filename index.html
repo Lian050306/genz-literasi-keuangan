@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenZ Financial Literation - Beranda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* FITUR CARDS */
+        .features {
+            max-width: 1200px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .feature-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .feature-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* MATERI POPULER */
+        .popular-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        
+        .materi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .materi-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .materi-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .materi-icon {
+            font-size: 2em;
+        }
+        
+        .materi-item h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .materi-item p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📊 GenZ Literation</div>
+            <ul class="nav-menu">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/kuisioner">Nilai Risiko</a></li>
+                <li><a href="/materi">Edukasi</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Tingkatkan Literasi Keuanganmu!</h1>
+        <p>Kenali profil risiko investasimu dan pelajari materi edukasi untuk menjadi investor yang cerdas.</p>
+    </section>
+
+    <!-- FITUR UTAMA -->
+    <div class="features">
+        <!-- CARD 1: Nilai Risiko -->
+        <div class="feature-card" onclick="location.href='/kuisioner'">
+            <div class="feature-icon">📝</div>
+            <h3>Cek Profil Risiko</h3>
+            <p>Jawab beberapa pertanyaan untuk mengetahui sejauh mana pemahamanmu tentang investasi saham.</p>
+            <button class="feature-btn" onclick="event.stopPropagation(); location.href='/kuisioner'">
+                Mulai Tes →
+            </button>
+        </div>
+
+        <!-- CARD 2: Edukasi -->
+        <div class="feature-card" onclick="location.href='/materi'">
+            <div class="feature-icon">📚</div>
+            <h3>Materi Edukasi</h3>
+            <p>Pelajari berbagai materi tentang investasi saham, dari dasar hingga strategi lanjutan.</p>
+            <button class="feature-btn" onclick="event.stopPropagation(); location.href='/materi'">
+                Lihat Materi →
+            </button>
+        </div>
+
+        <!-- CARD 3: Simulasi -->
+        <div class="feature-card" onclick="location.href='/simulasi'">
+            <div class="feature-icon">📊</div>
+            <h3>Simulasi Investasi</h3>
+            <p>Coba simulasi investasi dengan berbagai skenario dan pelajari potensi keuntungan & risikonya.</p>
+            <button class="feature-btn" onclick="event.stopPropagation(); location.href='/simulasi'">
+                Coba Simulasi →
+            </button>
+        </div>
+    </div>
+
+    <!-- MATERI POPULER -->
+    <section class="popular-section">
+        <h2 class="section-title">📖 Materi Populer</h2>
+        <div class="materi-grid">
+            <div class="materi-item" onclick="location.href='/materi#dasar'">
+                <div class="materi-icon">📈</div>
+                <div>
+                    <h4>Apa itu Saham?</h4>
+                    <p>Pengertian dasar dan cara kerjanya</p>
+                </div>
+            </div>
+            <div class="materi-item" onclick="location.href='/materi#risiko'">
+                <div class="materi-icon">⚠️</div>
+                <div>
+                    <h4>Memahami Risiko</h4>
+                    <p>Jenis-jenis risiko dalam investasi</p>
+                </div>
+            </div>
+            <div class="materi-item" onclick="location.href='/materi#analisis'">
+                <div class="materi-icon">📊</div>
+                <div>
+                    <h4>Analisis Teknikal</h4>
+                    <p>Cara membaca grafik saham</p>
+                </div>
+            </div>
+            <div class="materi-item" onclick="location.href='/materi#fundamental'">
+                <div class="materi-icon">📋</div>
+                <div>
+                    <h4>Analisis Fundamental</h4>
+                    <p>Membaca laporan keuangan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2024 GenZ Financial Literation - PKM Project</p>
+    </footer>
+
+    <script>
+        // Smooth scroll untuk anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuesioner - Nilai Risiko Investasimu</title>
+    <style>
+        /* Copy style dari index.html sebelumnya ditambah style kuesioner */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+        
+        /* Style kuesioner (sama seperti sebelumnya) */
+        .quiz-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .progress {
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .question-counter {
+            text-align: right;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+        }
+        
+        .question-text {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+        
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #667eea;
+        }
+        
+        .option input {
+            margin-right: 15px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Result Page */
+        .result-page {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .score-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .score-number {
+            font-size: 3em;
+            font-weight: bold;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .category-badge.beginner {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .category-badge.intermediate {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .category-badge.advanced {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .recommendation-steps {
+            list-style: none;
+        }
+        
+        .recommendation-steps li {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .btn-materi {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-materi:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        .btn-beranda {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📊 GenZ Literation</div>
+            <ul class="nav-menu">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/kuisioner">Nilai Risiko</a></li>
+                <li><a href="/materi">Edukasi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="quiz-box">
+            <div class="progress">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div id="question-counter" class="question-counter">Pertanyaan 1/5</div>
+            </div>
+
+            <div id="question-area">
+                <!-- Questions will be loaded here -->
+            </div>
+
+            <div class="nav-buttons">
+                <button id="prev-btn" class="btn btn-secondary" onclick="prevQuestion()" disabled>← Sebelumnya</button>
+                <button id="next-btn" class="btn btn-primary" onclick="nextQuestion()">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- Result Container -->
+        <div id="result-container" class="result-page hidden">
+            <!-- Results will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "Seberapa sering Anda membaca berita ekonomi?",
+                options: [
+                    { value: "a", label: "Jarang/tidak pernah" },
+                    { value: "b", label: "Kadang-kadang" },
+                    { value: "c", label: "Rutin setiap hari" }
+                ]
+            },
+            {
+                text: "Apakah Anda pernah mengalami kerugian investasi?",
+                options: [
+                    { value: "a", label: "Belum pernah investasi" },
+                    { value: "b", label: "Pernah, rugi kecil" },
+                    { value: "c", label: "Pernah, paham cara mengatasinya" }
+                ]
+            },
+            {
+                text: "Apa yang Anda lakukan saat saham turun drastis?",
+                options: [
+                    { value: "a", label: "Panik dan jual semua" },
+                    { value: "b", label: "Tahan dulu, lihat perkembangan" },
+                    { value: "c", label: "Analisis dulu sebelum keputusan" }
+                ]
+            },
+            {
+                text: "Apakah Anda tahu cara membaca laporan keuangan?",
+                options: [
+                    { value: "a", label: "Tidak tahu" },
+                    { value: "b", label: "Tahu sedikit" },
+                    { value: "c", label: "Bisa menganalisis" }
+                ]
+            },
+            {
+                text: "Berapa persen dana darurat sebelum investasi?",
+                options: [
+                    { value: "a", label: "Tidak tahu" },
+                    { value: "b", label: "Kurang dari 3 bulan" },
+                    { value: "c", label: "≥ 6 bulan pengeluaran" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = new Array(questions.length).fill(null);
+
+        function loadQuestion(index) {
+            const q = questions[index];
+            let html = `
+                <div class="question-container">
+                    <div class="question-text">${index + 1}. ${q.text}</div>
+                    <div class="options">
+            `;
+            
+            q.options.forEach(option => {
+                const isSelected = answers[index] === option.value;
+                html += `
+                    <label class="option ${isSelected ? 'selected' : ''}">
+                        <input type="radio" name="q${index}" value="${option.value}" 
+                               ${isSelected ? 'checked' : ''} onchange="selectOption(${index}, '${option.value}')">
+                        <span>${option.label}</span>
+                    </label>
+                `;
+            });
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('question-area').innerHTML = html;
+            
+            const progress = ((index + 1) / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('question-counter').textContent = `Pertanyaan ${index + 1}/${questions.length}`;
+            
+            document.getElementById('prev-btn').disabled = index === 0;
+            
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.textContent = index === questions.length - 1 ? 'Selesai ✓' : 'Selanjutnya →';
+        }
+
+        function selectOption(questionIndex, value) {
+            answers[questionIndex] = value;
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.target.closest('.option').classList.add('selected');
+        }
+
+        function nextQuestion() {
+            if (answers[currentQuestion] === null) {
+                alert('Pilih jawaban dulu ya!');
+                return;
+            }
+            
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        }
+
+        async function submitQuiz() {
+            if (answers.includes(null)) {
+                alert('Semua pertanyaan harus dijawab!');
+                return;
+            }
+            
+            document.getElementById('quiz-container').innerHTML = `
+                <div style="text-align: center; padding: 50px;">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 20px;">Menghitung skor risiko kamu...</p>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch('/api/submit-quiz', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ answers: answers })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showResults(data.result);
+                } else {
+                    showSimulatedResults();
+                }
+            } catch (error) {
+                showSimulatedResults();
+            }
+        }
+
+        function showSimulatedResults() {
+            let score = 0;
+            answers.forEach(answer => {
+                if (answer === 'c') score += 10;
+                else if (answer === 'b') score += 5;
+            });
+            score = Math.round((score / (questions.length * 10)) * 100);
+            
+            showResults({
+                score: score,
+                category: score < 40 ? 'pemula' : (score < 70 ? 'menengah' : 'lanjutan'),
+                recommendations: { prioritas: ['📘 Belajar dasar saham', '⚖️ Pahami risiko', '💡 Mulai demo'] }
+            });
+        }
+
+        function showResults(result) {
+            const score = result.score;
+            
+            let categoryClass = '', categoryText = '', description = '';
+            if (score < 40) {
+                categoryClass = 'beginner';
+                categoryText = '🎓 INVESTOR PEMULA';
+                description = 'Masih perlu belajar dasar-dasar investasi';
+            } else if (score < 70) {
+                categoryClass = 'intermediate';
+                categoryText = '📊 INVESTOR MENENGAH';
+                description = 'Paham dasar tapi perlu pendalaman risiko';
+            } else {
+                categoryClass = 'advanced';
+                categoryText = '📈 INVESTOR LANJUTAN';
+                description = 'Pemahaman baik, fokus ke optimalisasi';
+            }
+            
+            const resultHTML = `
+                <div class="score-section">
+                    <div class="score-circle">
+                        <span class="score-number">${score}</span>
+                        <span class="score-max">/100</span>
+                    </div>
+                    <div class="category-badge ${categoryClass}">${categoryText}</div>
+                </div>
+
+                <div class="info-card">
+                    <h3>📊 Arti Skor Kamu</h3>
+                    <p>${description}</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>📚 Edukasi Singkat</h3>
+                    <ul>
+                        <li>📘 Pahami risiko sebelum investasi</li>
+                        <li>📈 Mulai dari jumlah kecil</li>
+                        <li>🎯 Diversifikasi portofolio</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎯 Rekomendasi</h3>
+                    <ul class="recommendation-steps">
+                        <li><span class="step-number">1</span> Belajar dasar saham</li>
+                        <li><span class="step-number">2</span> Coba akun demo</li>
+                        <li><span class="step-number">3</span> Konsultasi dengan ahli</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="/materi" class="btn-materi">📖 Pelajari Selengkapnya →</a>
+                        <a href="/" class="btn-beranda">🏠 Kembali ke Beranda</a>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('result-container').innerHTML = resultHTML;
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-container').classList.remove('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadQuestion(0);
+        });
+    </script>
+</body>
+</html>
