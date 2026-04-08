@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Investasi - LITERISK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+        
+        .simulation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        .simulation-card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-hitung {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .btn-hitung:hover {
+            transform: scale(1.02);
+        }
+        
+        .result-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .result-box h3 {
+            margin-bottom: 15px;
+        }
+        
+        .result-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .result-profit {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .result-profit.positive {
+            color: #00ff88;
+        }
+        
+        .result-profit.negative {
+            color: #ff6b6b;
+        }
+        
+        .disclaimer {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .btn-back:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📊 LITERISK</div>
+            <ul class="nav-menu">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/kuisioner">Analisis Risiko</a></li>
+                <li><a href="/materi">Literasi Keuangan</a></li>
+                <li><a href="/simulasi">Simulasi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="/" class="btn-back">← Kembali ke Beranda</a>
+        
+        <div class="simulation-card">
+            <h2>📈 Simulasi Investasi Saham</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">Hitung potensi keuntungan/kerugian investasi Anda</p>
+            
+            <div class="input-group">
+                <label>💰 Modal Awal (Rp)</label>
+                <input type="number" id="modal" placeholder="Contoh: 1000000" value="1000000">
+            </div>
+            
+            <div class="input-group">
+                <label>📊 Harga Beli per Saham (Rp)</label>
+                <input type="number" id="hargaBeli" placeholder="Contoh: 5000" value="5000">
+            </div>
+            
+            <div class="input-group">
+                <label>📈 Harga Jual per Saham (Rp)</label>
+                <input type="number" id="hargaJual" placeholder="Contoh: 5500" value="5500">
+            </div>
+            
+            <div class="input-group">
+                <label>⏱️ Periode Investasi</label>
+                <select id="periode">
+                    <option value="1">1 bulan</option>
+                    <option value="3">3 bulan</option>
+                    <option value="6">6 bulan</option>
+                    <option value="12">1 tahun</option>
+                </select>
+            </div>
+            
+            <button class="btn-hitung" onclick="hitungSimulasi()">Hitung Simulasi →</button>
+            
+            <div id="resultArea" style="display: none;">
+                <div class="result-box">
+                    <h3>📊 Hasil Simulasi</h3>
+                    <div id="resultContent"></div>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                ⚠️ Disclaimer: Hasil simulasi ini hanya sebagai alat bantu edukasi. Bukan merupakan rekomendasi investasi. Keputusan investasi sepenuhnya ada di tangan Anda.
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 LITERISK - Smart Platform Berbasis Data untuk Analisis Risiko dan Literasi Keuangan</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">PKM - Program Kreativitas Mahasiswa</p>
+    </footer>
+
+    <script>
+        function hitungSimulasi() {
+            const modal = parseInt(document.getElementById('modal').value);
+            const hargaBeli = parseInt(document.getElementById('hargaBeli').value);
+            const hargaJual = parseInt(document.getElementById('hargaJual').value);
+            const periode = document.getElementById('periode').value;
+            
+            if (isNaN(modal) || isNaN(hargaBeli) || isNaN(hargaJual)) {
+                alert('Harap isi semua kolom dengan benar!');
+                return;
+            }
+            
+            // Hitung jumlah lembar saham yang bisa dibeli
+            const jumlahLembar = Math.floor(modal / hargaBeli);
+            const modalTerpakai = jumlahLembar * hargaBeli;
+            const sisaDana = modal - modalTerpakai;
+            
+            // Hitung nilai jual
+            const nilaiJual = jumlahLembar * hargaJual;
+            
+            // Hitung keuntungan/kerugian
+            const labaRugi = nilaiJual - modalTerpakai;
+            const persentase = (labaRugi / modalTerpakai) * 100;
+            
+            // Tentukan warna dan status
+            const isProfit = labaRugi >= 0;
+            const statusText = isProfit ? 'KEUNTUNGAN' : 'KERUGIAN';
+            const statusClass = isProfit ? 'positive' : 'negative';
+            const statusIcon = isProfit ? '📈' : '📉';
+            
+            // Estimasi per bulan (asumsi sederhana)
+            const estimasiPerBulan = persentase / parseInt(periode);
+            
+            const resultHTML = `
+                <p>💰 Modal Awal: <strong>Rp ${modal.toLocaleString('id-ID')}</strong></p>
+                <p>📊 Jumlah Saham: <strong>${jumlahLembar.toLocaleString('id-ID')} lembar</strong></p>
+                <p>💸 Dana Investasi: <strong>Rp ${modalTerpakai.toLocaleString('id-ID')}</strong></p>
+                <p>💵 Nilai Jual: <strong>Rp ${nilaiJual.toLocaleString('id-ID')}</strong></p>
+                <div class="result-profit ${statusClass}">
+                    ${statusIcon} ${statusText}: Rp ${Math.abs(labaRugi).toLocaleString('id-ID')}
+                </div>
+                <p>📊 Persentase: <strong>${persentase.toFixed(2)}%</strong></p>
+                <p>⏱️ Estimasi per bulan: <strong>${estimasiPerBulan.toFixed(2)}%</strong></p>
+                ${sisaDana > 0 ? `<p>💵 Sisa dana tidak terpakai: Rp ${sisaDana.toLocaleString('id-ID')}</p>` : ''}
+            `;
+            
+            document.getElementById('resultContent').innerHTML = resultHTML;
+            document.getElementById('resultArea').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
