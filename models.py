@@ -28,7 +28,7 @@ class RiskAssesment:
     def calculate_score(self, answers):
         """Hitung skor dari jawaban kuesioner"""
         score = 0
-        max_score = len(answers) * 10  # Misal每题最高10分
+        max_score = len(answers) * 10  # Misal
         
         # Logika penilaian
         for answer in answers:

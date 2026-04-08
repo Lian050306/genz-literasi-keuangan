@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi Edukasi Lengkap - Risk Profiler Gen Z</title>
+    <title>Materi Edukasi Lengkap - Literisk</title>
     <style>
         * {
             margin: 0;
@@ -13,31 +13,104 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-        }
-        
-        .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
+            min-height: 100vh;
         }
         
-        .header h1 {
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+        
+        /* Container Utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+        
+        /* Header Halaman */
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: -50px auto 50px;
-            padding: 0 20px;
+        .page-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
         }
         
+        /* Search Box */
+        .search-box {
+            margin-bottom: 30px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+        
+        .search-box input:focus {
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Grid Materi */
         .materi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
+            margin-bottom: 50px;
         }
         
         .materi-card {
@@ -82,8 +155,8 @@
         }
         
         .topic-icon {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             background: #f0f0f0;
             border-radius: 50%;
             display: flex;
@@ -93,11 +166,89 @@
             font-size: 1.2em;
         }
         
+        .topic-list a {
+            text-decoration: none;
+            color: #333;
+            flex: 1;
+        }
+        
+        .topic-list a:hover {
+            color: #667eea;
+        }
+        
+        /* Section Video */
+        .video-section {
+            margin-top: 50px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .video-info p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
         .btn-back {
             display: inline-block;
-            margin: 20px 0;
+            margin-bottom: 20px;
             padding: 12px 30px;
-            background: #6c757d;
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -105,41 +256,56 @@
         }
         
         .btn-back:hover {
-            background: #5a6268;
+            background: rgba(255,255,255,0.3);
         }
         
-        .search-box {
-            margin: 30px 0;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1.1em;
-            transition: border-color 0.3s;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: #667eea;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8em;
+            }
+            
+            .materi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>📚 Materi Edukasi Lengkap</h1>
-        <p>Semua yang perlu kamu tahu tentang investasi saham</p>
-    </div>
-    
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📚 Literisk</div>
+            <ul class="nav-menu">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/kuisioner">Nilai Risiko</a></li>
+                <li><a href="/materi">Edukasi</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <a href="/" class="btn-back">← Kembali ke Kuesioner</a>
+        <a href="/" class="btn-back">← Kembali ke Beranda</a>
         
-        <div class="search-box">
-            <input type="text" placeholder="Cari materi... (misal: risiko, analisis, pemula)" id="searchInput">
+        <div class="page-header">
+            <h1>📚 Materi Edukasi Lengkap</h1>
+            <p>Semua yang perlu kamu tahu tentang investasi saham</p>
         </div>
         
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" placeholder="🔍 Cari materi... (misal: risiko, analisis, pemula)" id="searchInput">
+        </div>
+        
+        <!-- Grid Materi -->
         <div class="materi-grid" id="materiGrid">
             <!-- Level 1: Pemula -->
             <div class="materi-card">
@@ -150,31 +316,23 @@
                     <ul class="topic-list">
                         <li>
                             <span class="topic-icon">📈</span>
-                            <div>
-                                <strong>Apa itu Saham?</strong>
-                                <p style="color: #666; font-size: 0.9em;">Pengertian dasar dan cara kerjanya</p>
-                            </div>
+                            <a href="#">Apa itu Saham? - Pengertian dasar dan cara kerjanya</a>
                         </li>
                         <li>
                             <span class="topic-icon">🏦</span>
-                            <div>
-                                <strong>Cara Membeli Saham</strong>
-                                <p style="color: #666; font-size: 0.9em;">Langkah-langkah jadi investor</p>
-                            </div>
+                            <a href="#">Cara Membeli Saham - Langkah-langkah jadi investor</a>
                         </li>
                         <li>
                             <span class="topic-icon">⚠️</span>
-                            <div>
-                                <strong>Risiko Dasar</strong>
-                                <p style="color: #666; font-size: 0.9em;">Apa yang bisa bikin rugi</p>
-                            </div>
+                            <a href="#">Risiko Dasar - Apa yang bisa bikin rugi</a>
                         </li>
                         <li>
                             <span class="topic-icon">💰</span>
-                            <div>
-                                <strong>Modal Minimal</strong>
-                                <p style="color: #666; font-size: 0.9em;">Berapa uang yang dibutuhkan</p>
-                            </div>
+                            <a href="#">Modal Minimal - Berapa uang yang dibutuhkan</a>
+                        </li>
+                        <li>
+                            <span class="topic-icon">📊</span>
+                            <a href="#">Jenis-jenis Saham - Saham biasa, preferen, dan lainnya</a>
                         </li>
                     </ul>
                 </div>
@@ -189,31 +347,23 @@
                     <ul class="topic-list">
                         <li>
                             <span class="topic-icon">📉</span>
-                            <div>
-                                <strong>Analisis Teknikal</strong>
-                                <p style="color: #666; font-size: 0.9em;">Baca grafik dan pola harga</p>
-                            </div>
+                            <a href="#">Analisis Teknikal - Baca grafik dan pola harga</a>
                         </li>
                         <li>
                             <span class="topic-icon">📋</span>
-                            <div>
-                                <strong>Analisis Fundamental</strong>
-                                <p style="color: #666; font-size: 0.9em;">Baca laporan keuangan</p>
-                            </div>
+                            <a href="#">Analisis Fundamental - Baca laporan keuangan</a>
                         </li>
                         <li>
                             <span class="topic-icon">🛡️</span>
-                            <div>
-                                <strong>Manajemen Risiko</strong>
-                                <p style="color: #666; font-size: 0.9em;">Cara proteksi modal</p>
-                            </div>
+                            <a href="#">Manajemen Risiko - Cara proteksi modal</a>
                         </li>
                         <li>
                             <span class="topic-icon">🧠</span>
-                            <div>
-                                <strong>Psikologi Trading</strong>
-                                <p style="color: #666; font-size: 0.9em;">Kendalikan emosi saat trading</p>
-                            </div>
+                            <a href="#">Psikologi Trading - Kendalikan emosi saat trading</a>
+                        </li>
+                        <li>
+                            <span class="topic-icon">📈</span>
+                            <a href="#">Diversifikasi - Cara menyebar risiko investasi</a>
                         </li>
                     </ul>
                 </div>
@@ -228,72 +378,134 @@
                     <ul class="topic-list">
                         <li>
                             <span class="topic-icon">🎯</span>
-                            <div>
-                                <strong>Value Investing</strong>
-                                <p style="color: #666; font-size: 0.9em;">Strategi Warren Buffett</p>
-                            </div>
+                            <a href="#">Value Investing - Strategi Warren Buffett</a>
                         </li>
                         <li>
                             <span class="topic-icon">🔄</span>
-                            <div>
-                                <strong>Portfolio Rebalancing</strong>
-                                <p style="color: #666; font-size: 0.9em;">Atur ulang portofolio</p>
-                            </div>
+                            <a href="#">Portfolio Rebalancing - Atur ulang portofolio</a>
                         </li>
                         <li>
                             <span class="topic-icon">🌏</span>
-                            <div>
-                                <strong>Analisis Makro</strong>
-                                <p style="color: #666; font-size: 0.9em;">Pengaruh ekonomi global</p>
-                            </div>
+                            <a href="#">Analisis Makro - Pengaruh ekonomi global</a>
                         </li>
                         <li>
                             <span class="topic-icon">⚖️</span>
-                            <div>
-                                <strong>Hedging Strategi</strong>
-                                <p style="color: #666; font-size: 0.9em;">Lindung nilai investasi</p>
-                            </div>
+                            <a href="#">Hedging Strategi - Lindung nilai investasi</a>
+                        </li>
+                        <li>
+                            <span class="topic-icon">💹</span>
+                            <a href="#">Derivatif - Opsi, future, dan swap</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         
-        <!-- Bagian Video Pembelajaran -->
-        <div style="margin-top: 40px;">
-            <h2 style="margin-bottom: 20px;">🎥 Video Pembelajaran</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                    <div style="background: #333; height: 180px; display: flex; align-items: center; justify-content: center; color: white;">
-                        🎬 Video 1: Dasar Saham
+        <!-- SECTION VIDEO PEMBELAJARAN -->
+        <div class="video-section">
+            <h2 class="section-title">🎥 Video Pembelajaran</h2>
+            <div class="video-grid">
+                <!-- Video 1: Pengenalan Saham -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://youtu.be/34GAt7EJ2VU?si=6jEmaydV0UxwFErx" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
-                    <div style="padding: 15px;">
-                        <h4>Pengenalan Pasar Modal</h4>
-                        <p style="color: #666; font-size: 0.9em;">Durasi: 15 menit</p>
+                    <div class="video-info">
+                        <h4>📹 Pengenalan Pasar Modal</h4>
+                        <p>Belajar dasar-dasar pasar modal dan cara kerjanya.</p>
                     </div>
                 </div>
-                <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                    <div style="background: #333; height: 180px; display: flex; align-items: center; justify-content: center; color: white;">
-                        🎬 Video 2: Analisis Teknikal
+                
+                <!-- Video 2: Analisis Teknikal -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://youtu.be/0N_iqF770Xc?si=ZKXm-PDcf9BstPkt" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
-                    <div style="padding: 15px;">
-                        <h4>Cara Baca Grafik Saham</h4>
-                        <p style="color: #666; font-size: 0.9em;">Durasi: 20 menit</p>
+                    <div class="video-info">
+                        <h4>📊 Cara Baca Grafik Saham</h4>
+                        <p>Pelajari analisis teknikal untuk membaca pergerakan harga saham. Durasi: 13 menit</p>
+                    </div>
+                </div>
+                
+                <!-- Video 3: Manajemen Risiko -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://youtu.be/4qxtyWRSbiE?si=m9spA2SXC5X9HJqD" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>🛡️ Memahami Risiko Investasi</h4>
+                        <p>Kenali berbagai jenis risiko dalam investasi saham. Durasi: 18 menit</p>
+                    </div>
+                </div>
+                
+                <!-- Video 4: Psikologi Trading -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://youtu.be/OFisLSpu_eo?si=BtVBG7Ns2kxxOtmb" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>🧠 Psikologi Trading untuk Pemula</h4>
+                        <p>Kendalikan emosi FOMO dan panik saat investasi. Durasi: 25 menit</p>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Tips & Catatan -->
+        <div style="margin-top: 40px; background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; color: white;">
+            <h3 style="margin-bottom: 15px;">💡 Tips Belajar Investasi:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>Mulai dari materi dasar sebelum ke materi lanjutan</li>
+                <li>Praktekkan dengan akun demo sebelum investasi sungguhan</li>
+                <li>Jangan pernah berinvestasi dengan uang dingin (dana darurat)</li>
+                <li>Konsisten belajar minimal 30 menit setiap hari</li>
+                <li>Gabung komunitas investor untuk diskusi dan berbagi pengalaman</li>
+            </ul>
+        </div>
     </div>
     
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2024 Literisk - Platform Edukasi & Risk Profiling Investasi Saham untuk Generasi Z</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">PKM - Program Kreativitas Mahasiswa</p>
+    </footer>
+
     <script>
-        // Fitur search sederhana
+        // Fitur search
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.materi-card');
             
+            if (searchTerm === '') {
+                cards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                return;
+            }
+            
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
-                if (text.includes(searchTerm) || searchTerm === '') {
+                if (text.includes(searchTerm)) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
