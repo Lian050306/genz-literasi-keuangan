@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuesioner - Nilai Risiko Investasimu</title>
+    <title>Analisis Risiko - LITERISK</title>
     <style>
-        /* Copy style dari index.html sebelumnya ditambah style kuesioner */
         * {
             margin: 0;
             padding: 0;
@@ -56,6 +55,11 @@
             text-decoration: none;
             color: #333;
             font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
         }
         
         .container {
@@ -64,7 +68,6 @@
             padding: 100px 20px 50px;
         }
         
-        /* Style kuesioner (sama seperti sebelumnya) */
         .quiz-box {
             background: white;
             border-radius: 20px;
@@ -163,7 +166,6 @@
             cursor: not-allowed;
         }
         
-        /* Result Page */
         .result-page {
             background: white;
             border-radius: 20px;
@@ -297,22 +299,39 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .quiz-box, .result-page {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">📊 GenZ Literation</div>
+            <div class="logo">📊 LITERISK</div>
             <ul class="nav-menu">
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/kuisioner">Nilai Risiko</a></li>
-                <li><a href="/materi">Edukasi</a></li>
+                <li><a href="/kuisioner">Analisis Risiko</a></li>
+                <li><a href="/materi">Literasi Keuangan</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Quiz Container -->
         <div id="quiz-container" class="quiz-box">
             <div class="progress">
                 <div class="progress-bar">
@@ -321,9 +340,7 @@
                 <div id="question-counter" class="question-counter">Pertanyaan 1/5</div>
             </div>
 
-            <div id="question-area">
-                <!-- Questions will be loaded here -->
-            </div>
+            <div id="question-area"></div>
 
             <div class="nav-buttons">
                 <button id="prev-btn" class="btn btn-secondary" onclick="prevQuestion()" disabled>← Sebelumnya</button>
@@ -331,11 +348,13 @@
             </div>
         </div>
 
-        <!-- Result Container -->
-        <div id="result-container" class="result-page hidden">
-            <!-- Results will be loaded here -->
-        </div>
+        <div id="result-container" class="result-page hidden"></div>
     </div>
+
+    <footer class="footer">
+        <p>© 2024 LITERISK - Smart Platform Berbasis Data untuk Analisis Risiko dan Literasi Keuangan</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">PKM - Program Kreativitas Mahasiswa</p>
+    </footer>
 
     <script>
         const questions = [
@@ -403,10 +422,7 @@
                 `;
             });
             
-            html += `
-                    </div>
-                </div>
-            `;
+            html += `</div></div>`;
             
             document.getElementById('question-area').innerHTML = html;
             

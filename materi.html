@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi Edukasi Lengkap - Literisk</title>
+    <title>Literasi Keuangan - LITERISK</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,6 @@
             min-height: 100vh;
         }
         
-        /* NAVBAR */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             padding: 15px 0;
@@ -62,14 +61,12 @@
             color: #667eea;
         }
         
-        /* Container Utama */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 100px 20px 50px;
         }
         
-        /* Header Halaman */
         .page-header {
             text-align: center;
             color: white;
@@ -86,7 +83,6 @@
             opacity: 0.9;
         }
         
-        /* Search Box */
         .search-box {
             margin-bottom: 30px;
         }
@@ -101,11 +97,6 @@
             outline: none;
         }
         
-        .search-box input:focus {
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-        
-        /* Grid Materi */
         .materi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -166,17 +157,6 @@
             font-size: 1.2em;
         }
         
-        .topic-list a {
-            text-decoration: none;
-            color: #333;
-            flex: 1;
-        }
-        
-        .topic-list a:hover {
-            color: #667eea;
-        }
-        
-        /* Section Video */
         .video-section {
             margin-top: 50px;
         }
@@ -235,7 +215,6 @@
             font-size: 0.9em;
         }
         
-        /* Footer */
         .footer {
             background: #1a1a1a;
             color: white;
@@ -259,7 +238,6 @@
             background: rgba(255,255,255,0.3);
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -269,25 +247,20 @@
                 font-size: 1.8em;
             }
             
-            .materi-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .video-grid {
+            .materi-grid, .video-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">📚 Literisk</div>
+            <div class="logo">📊 LITERISK</div>
             <ul class="nav-menu">
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/kuisioner">Nilai Risiko</a></li>
-                <li><a href="/materi">Edukasi</a></li>
+                <li><a href="/kuisioner">Analisis Risiko</a></li>
+                <li><a href="/materi">Literasi Keuangan</a></li>
             </ul>
         </div>
     </nav>
@@ -296,182 +269,106 @@
         <a href="/" class="btn-back">← Kembali ke Beranda</a>
         
         <div class="page-header">
-            <h1>📚 Materi Edukasi Lengkap</h1>
-            <p>Semua yang perlu kamu tahu tentang investasi saham</p>
+            <h1>📚 Literasi Keuangan</h1>
+            <p>Materi edukasi berbasis data untuk meningkatkan pemahaman investasi Anda</p>
         </div>
         
-        <!-- Search Box -->
         <div class="search-box">
             <input type="text" placeholder="🔍 Cari materi... (misal: risiko, analisis, pemula)" id="searchInput">
         </div>
         
-        <!-- Grid Materi -->
         <div class="materi-grid" id="materiGrid">
-            <!-- Level 1: Pemula -->
             <div class="materi-card">
                 <div class="card-header">
                     <h2>🌱 Level Pemula</h2>
                 </div>
                 <div class="card-body">
                     <ul class="topic-list">
-                        <li>
-                            <span class="topic-icon">📈</span>
-                            <a href="#">Apa itu Saham? - Pengertian dasar dan cara kerjanya</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">🏦</span>
-                            <a href="#">Cara Membeli Saham - Langkah-langkah jadi investor</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">⚠️</span>
-                            <a href="#">Risiko Dasar - Apa yang bisa bikin rugi</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">💰</span>
-                            <a href="#">Modal Minimal - Berapa uang yang dibutuhkan</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">📊</span>
-                            <a href="#">Jenis-jenis Saham - Saham biasa, preferen, dan lainnya</a>
-                        </li>
+                        <li><span class="topic-icon">📈</span>Apa itu Saham? - Pengertian dasar dan cara kerjanya</li>
+                        <li><span class="topic-icon">🏦</span>Cara Membeli Saham - Langkah-langkah jadi investor</li>
+                        <li><span class="topic-icon">⚠️</span>Risiko Dasar - Apa yang bisa bikin rugi</li>
+                        <li><span class="topic-icon">💰</span>Modal Minimal - Berapa uang yang dibutuhkan</li>
+                        <li><span class="topic-icon">📊</span>Jenis-jenis Saham - Saham biasa, preferen, dan lainnya</li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Level 2: Menengah -->
             <div class="materi-card">
                 <div class="card-header">
                     <h2>📊 Level Menengah</h2>
                 </div>
                 <div class="card-body">
                     <ul class="topic-list">
-                        <li>
-                            <span class="topic-icon">📉</span>
-                            <a href="#">Analisis Teknikal - Baca grafik dan pola harga</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">📋</span>
-                            <a href="#">Analisis Fundamental - Baca laporan keuangan</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">🛡️</span>
-                            <a href="#">Manajemen Risiko - Cara proteksi modal</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">🧠</span>
-                            <a href="#">Psikologi Trading - Kendalikan emosi saat trading</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">📈</span>
-                            <a href="#">Diversifikasi - Cara menyebar risiko investasi</a>
-                        </li>
+                        <li><span class="topic-icon">📉</span>Analisis Teknikal - Baca grafik dan pola harga</li>
+                        <li><span class="topic-icon">📋</span>Analisis Fundamental - Baca laporan keuangan</li>
+                        <li><span class="topic-icon">🛡️</span>Manajemen Risiko - Cara proteksi modal</li>
+                        <li><span class="topic-icon">🧠</span>Psikologi Trading - Kendalikan emosi saat trading</li>
+                        <li><span class="topic-icon">📈</span>Diversifikasi - Cara menyebar risiko investasi</li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Level 3: Lanjutan -->
             <div class="materi-card">
                 <div class="card-header">
                     <h2>🚀 Level Lanjutan</h2>
                 </div>
                 <div class="card-body">
                     <ul class="topic-list">
-                        <li>
-                            <span class="topic-icon">🎯</span>
-                            <a href="#">Value Investing - Strategi Warren Buffett</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">🔄</span>
-                            <a href="#">Portfolio Rebalancing - Atur ulang portofolio</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">🌏</span>
-                            <a href="#">Analisis Makro - Pengaruh ekonomi global</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">⚖️</span>
-                            <a href="#">Hedging Strategi - Lindung nilai investasi</a>
-                        </li>
-                        <li>
-                            <span class="topic-icon">💹</span>
-                            <a href="#">Derivatif - Opsi, future, dan swap</a>
-                        </li>
+                        <li><span class="topic-icon">🎯</span>Value Investing - Strategi Warren Buffett</li>
+                        <li><span class="topic-icon">🔄</span>Portfolio Rebalancing - Atur ulang portofolio</li>
+                        <li><span class="topic-icon">🌏</span>Analisis Makro - Pengaruh ekonomi global</li>
+                        <li><span class="topic-icon">⚖️</span>Hedging Strategi - Lindung nilai investasi</li>
+                        <li><span class="topic-icon">💹</span>Derivatif - Opsi, future, dan swap</li>
                     </ul>
                 </div>
             </div>
         </div>
         
-        <!-- SECTION VIDEO PEMBELAJARAN -->
         <div class="video-section">
             <h2 class="section-title">🎥 Video Pembelajaran</h2>
             <div class="video-grid">
-                <!-- Video 1: Struktur Pasar Modal -->
                 <div class="video-card">
                     <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/34GAt7EJ2VU" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/34GAt7EJ2VU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>📹 Struktur Pasar Modal</h4>
-                        <p>Mengenal struktur dan mekanisme pasar modal. Durasi: 10 menit</p>
+                        <p>Mengenal struktur dan mekanisme pasar modal</p>
                     </div>
                 </div>
                 
-                <!-- Video 2: Analisa Teknikal untuk Pemula -->
                 <div class="video-card">
                     <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/0N_iqF770Xc" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/0N_iqF770Xc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>📊 Analisa Teknikal untuk Pemula</h4>
-                        <p>Belajar analisa teknikal dengan contoh prakteknya. Durasi: 25 menit</p>
+                        <p>Belajar analisa teknikal dengan contoh prakteknya</p>
                     </div>
                 </div>
                 
-                <!-- Video 3: Cara Mudah Kenali Profil & Resiko Investasi Saham -->
                 <div class="video-card">
                     <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/4qxtyWRSbiE" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/4qxtyWRSbiE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>🛡️ Cara Mudah Kenali Profil & Resiko Investasi Saham</h4>
-                        <p>Kenali profil risiko Anda sebelum berinvestasi. Durasi: 15 menit</p>
+                        <p>Kenali profil risiko Anda sebelum berinvestasi</p>
                     </div>
                 </div>
                 
-                <!-- Video 4: Psikologi Trading -->
                 <div class="video-card">
                     <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/OFisLSpu_eo" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/OFisLSpu_eo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>🧠 Psikologi Trading: 10 Nasehat Trading untuk Anda</h4>
-                        <p>Kendalikan emosi FOMO dan panik saat investasi. Durasi: 30 menit</p>
+                        <p>Kendalikan emosi FOMO dan panik saat investasi</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Tips & Catatan -->
         <div style="margin-top: 40px; background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; color: white;">
             <h3 style="margin-bottom: 15px;">💡 Tips Belajar Investasi:</h3>
             <ul style="margin-left: 20px; line-height: 1.8;">
@@ -484,32 +381,19 @@
         </div>
     </div>
     
-    <!-- FOOTER -->
     <footer class="footer">
-        <p>© 2024 Literisk - Platform Edukasi & Risk Profiling Investasi Saham untuk Generasi Z</p>
+        <p>© 2024 LITERISK - Smart Platform Berbasis Data untuk Analisis Risiko dan Literasi Keuangan</p>
         <p style="margin-top: 10px; font-size: 0.9em;">PKM - Program Kreativitas Mahasiswa</p>
     </footer>
 
     <script>
-        // Fitur search
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.materi-card');
             
-            if (searchTerm === '') {
-                cards.forEach(card => {
-                    card.style.display = 'block';
-                });
-                return;
-            }
-            
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = text.includes(searchTerm) || searchTerm === '' ? 'block' : 'none';
             });
         });
     </script>

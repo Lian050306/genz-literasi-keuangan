@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenZ Financial Literation - Beranda</title>
+    <title>LITERISK: Smart Platform Berbasis Data untuk Analisis Risiko dan Literasi Keuangan</title>
     <style>
         * {
             margin: 0;
@@ -71,14 +71,14 @@
         }
         
         .hero h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
-        .hero p {
+        .hero .tagline {
             font-size: 1.2em;
             color: #666;
             max-width: 800px;
@@ -173,6 +173,7 @@
             gap: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            cursor: pointer;
         }
         
         .materi-item:hover {
@@ -205,7 +206,7 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2em;
+                font-size: 1.5em;
             }
             
             .nav-menu {
@@ -218,38 +219,37 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">📊 GenZ Literation</div>
+            <div class="logo">📊 LITERISK</div>
             <ul class="nav-menu">
                 <li><a href="/">Beranda</a></li>
-                <li><a href="/kuisioner">Nilai Risiko</a></li>
-                <li><a href="/materi">Edukasi</a></li>
-                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="/kuisioner">Analisis Risiko</a></li>
+                <li><a href="/materi">Literasi Keuangan</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <h1>Tingkatkan Literasi Keuanganmu!</h1>
-        <p>Kenali profil risiko investasimu dan pelajari materi edukasi untuk menjadi investor yang cerdas.</p>
+        <h1>LITERISK: Smart Platform Berbasis Data<br>untuk Analisis Risiko dan Literasi Keuangan</h1>
+        <p class="tagline">Kenali profil risiko investasimu dan pelajari materi edukasi berbasis data untuk menjadi investor yang cerdas.</p>
     </section>
 
     <!-- FITUR UTAMA -->
     <div class="features">
-        <!-- CARD 1: Nilai Risiko -->
+        <!-- CARD 1: Analisis Risiko -->
         <div class="feature-card" onclick="location.href='/kuisioner'">
-            <div class="feature-icon">📝</div>
-            <h3>Cek Profil Risiko</h3>
+            <div class="feature-icon">📊</div>
+            <h3>Analisis Risiko</h3>
             <p>Jawab beberapa pertanyaan untuk mengetahui sejauh mana pemahamanmu tentang investasi saham.</p>
             <button class="feature-btn" onclick="event.stopPropagation(); location.href='/kuisioner'">
-                Mulai Tes →
+                Mulai Analisis →
             </button>
         </div>
 
-        <!-- CARD 2: Edukasi -->
+        <!-- CARD 2: Literasi Keuangan -->
         <div class="feature-card" onclick="location.href='/materi'">
             <div class="feature-icon">📚</div>
-            <h3>Materi Edukasi</h3>
+            <h3>Literasi Keuangan</h3>
             <p>Pelajari berbagai materi tentang investasi saham, dari dasar hingga strategi lanjutan.</p>
             <button class="feature-btn" onclick="event.stopPropagation(); location.href='/materi'">
                 Lihat Materi →
@@ -258,7 +258,7 @@
 
         <!-- CARD 3: Simulasi -->
         <div class="feature-card" onclick="location.href='/simulasi'">
-            <div class="feature-icon">📊</div>
+            <div class="feature-icon">📈</div>
             <h3>Simulasi Investasi</h3>
             <p>Coba simulasi investasi dengan berbagai skenario dan pelajari potensi keuntungan & risikonya.</p>
             <button class="feature-btn" onclick="event.stopPropagation(); location.href='/simulasi'">
@@ -269,30 +269,30 @@
 
     <!-- MATERI POPULER -->
     <section class="popular-section">
-        <h2 class="section-title">📖 Materi Populer</h2>
+        <h2 class="section-title">📖 Materi Literasi Keuangan</h2>
         <div class="materi-grid">
-            <div class="materi-item" onclick="location.href='/materi#dasar'">
+            <div class="materi-item" onclick="location.href='/materi'">
                 <div class="materi-icon">📈</div>
                 <div>
                     <h4>Apa itu Saham?</h4>
                     <p>Pengertian dasar dan cara kerjanya</p>
                 </div>
             </div>
-            <div class="materi-item" onclick="location.href='/materi#risiko'">
+            <div class="materi-item" onclick="location.href='/materi'">
                 <div class="materi-icon">⚠️</div>
                 <div>
                     <h4>Memahami Risiko</h4>
                     <p>Jenis-jenis risiko dalam investasi</p>
                 </div>
             </div>
-            <div class="materi-item" onclick="location.href='/materi#analisis'">
+            <div class="materi-item" onclick="location.href='/materi'">
                 <div class="materi-icon">📊</div>
                 <div>
                     <h4>Analisis Teknikal</h4>
                     <p>Cara membaca grafik saham</p>
                 </div>
             </div>
-            <div class="materi-item" onclick="location.href='/materi#fundamental'">
+            <div class="materi-item" onclick="location.href='/materi'">
                 <div class="materi-icon">📋</div>
                 <div>
                     <h4>Analisis Fundamental</h4>
@@ -304,11 +304,11 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p>© 2024 GenZ Financial Literation - PKM Project</p>
+        <p>© 2024 LITERISK - Smart Platform Berbasis Data untuk Analisis Risiko dan Literasi Keuangan</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">PKM - Program Kreativitas Mahasiswa</p>
     </footer>
 
     <script>
-        // Smooth scroll untuk anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
