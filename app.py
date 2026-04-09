@@ -165,10 +165,6 @@ def last_result():
 def materi():
     return render_template('materi.html')
 
-@app.route('/simulasi')
-def simulasi():
-    return render_template('simulasi.html')
-
 if __name__ == '__main__':
     app.run(debug=True)
 #http://localhost:5000/
